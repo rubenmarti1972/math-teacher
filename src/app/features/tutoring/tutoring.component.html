@@ -1,0 +1,33 @@
+<section class="page-shell tutoring-page">
+  <header>
+    <p class="kicker">Gestión de agenda</p>
+    <h1>Controla reservas y sesiones en minutos</h1>
+    <p>Panel de disponibilidad semanal, seguimiento de sesiones y operación docente.</p>
+  </header>
+
+  <div class="layout">
+    <article class="panel">
+      <h2>Horarios disponibles</h2>
+      @for (slot of slots$ | async; track slot.id) {
+        <div class="slot" [class.unavailable]="!slot.available">
+          <div>
+            <strong>{{ slot.day }}</strong>
+            <span>{{ slot.start }} - {{ slot.end }}</span>
+          </div>
+          <small>{{ slot.available ? 'Disponible' : 'Reservado' }}</small>
+        </div>
+      }
+    </article>
+
+    <article class="panel">
+      <h2>Sesiones registradas</h2>
+      @for (session of sessions$ | async; track session.id) {
+        <div class="session">
+          <strong>{{ session.student }}</strong>
+          <p>{{ session.topic }}</p>
+          <small>{{ session.date }} · {{ session.status }}</small>
+        </div>
+      }
+    </article>
+  </div>
+</section>

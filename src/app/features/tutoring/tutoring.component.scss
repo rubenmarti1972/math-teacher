@@ -1,0 +1,71 @@
+.tutoring-page {
+  padding-top: 2rem;
+
+  header {
+    margin-bottom: 1.2rem;
+
+    .kicker {
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      font-size: 0.78rem;
+    }
+
+    h1 {
+      margin-top: 0.3rem;
+      margin-bottom: 0.4rem;
+    }
+
+    p {
+      color: var(--muted);
+    }
+  }
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  gap: 1rem;
+}
+
+.panel {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 1rem;
+  box-shadow: 0 10px 30px rgba(47, 84, 235, 0.1);
+
+  h2 {
+    margin-bottom: 0.85rem;
+  }
+}
+
+.slot,
+.session {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 0.86rem;
+  margin-bottom: 0.65rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  background: #fcfdff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(47, 84, 235, 0.12);
+  }
+
+  span,
+  p,
+  small {
+    color: var(--muted);
+  }
+}
+
+.unavailable {
+  opacity: 0.62;
+}

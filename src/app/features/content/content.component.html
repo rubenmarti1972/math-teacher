@@ -1,0 +1,40 @@
+<section class="page-shell content-page">
+  <header>
+    <p class="kicker">Gestión de conocimiento</p>
+    <h1>Biblioteca educativa del docente</h1>
+    <p>Contenido multiformato pensado para captar estudiantes y reforzar aprendizaje autónomo.</p>
+  </header>
+
+  <div class="columns">
+    <article class="panel">
+      <h2>Artículos</h2>
+      @for (item of articles$ | async; track item.id) {
+        <div class="card">
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.summary }}</p>
+          <small>{{ item.area }} · {{ item.readTime }}</small>
+        </div>
+      }
+    </article>
+
+    <article class="panel">
+      <h2>Videos</h2>
+      @for (video of videos$ | async; track video.id) {
+        <div class="card">
+          <h3>{{ video.title }}</h3>
+          <small>{{ video.provider }} · {{ video.duration }} · {{ video.area }}</small>
+        </div>
+      }
+    </article>
+
+    <article class="panel">
+      <h2>Problemas</h2>
+      @for (problem of problems$ | async; track problem.id) {
+        <div class="card">
+          <p>{{ problem.statement }}</p>
+          <small>{{ problem.difficulty }} · {{ problem.solved ? 'Resuelto' : 'Pendiente' }}</small>
+        </div>
+      }
+    </article>
+  </div>
+</section>

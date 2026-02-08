@@ -1,0 +1,29 @@
+<footer class="footer-wrap">
+  <div class="page-shell footer">
+    <section>
+      <h3>EduTeacher</h3>
+      <p>
+        Aprende con una metodología clara, práctica constante y acompañamiento personalizado.
+      </p>
+      <p class="note">© 2026 EduTeacher. Todos los derechos reservados.</p>
+    </section>
+
+    <section>
+      <h4>Experiencia</h4>
+      <ul>
+        <li><a routerLink="/contenido">Biblioteca de recursos</a></li>
+        <li><a routerLink="/tutorias">Tutorías y agenda</a></li>
+        <li><a routerLink="/acceso">Portal de estudiantes</a></li>
+      </ul>
+    </section>
+
+    <section>
+      <h4>Comunidad</h4>
+      <ul>
+        @for (social of dataService.socialLinks; track social.label) {
+          <li><a [href]="social.url" target="_blank" rel="noreferrer">{{ social.label }}</a></li>
+        }
+      </ul>
+    </section>
+  </div>
+</footer>
