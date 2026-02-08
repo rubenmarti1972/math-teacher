@@ -1,0 +1,101 @@
+<section class="hero-wrap">
+  <div class="page-shell hero">
+    <div class="hero-main">
+      <p class="kicker">Aprende pensando</p>
+      <h1>La forma más atractiva de dominar matemáticas.</h1>
+      <p class="lead">
+        Lecciones visuales, práctica interactiva y tutorías en vivo diseñadas para que realmente
+        entiendas los conceptos.
+      </p>
+      <div class="actions">
+        <a routerLink="/contenido" class="btn-primary fade-up">Comenzar ahora</a>
+        <a routerLink="/tutorias" class="btn-outline fade-up">Ver tutorías</a>
+      </div>
+      <div class="hero-stats">
+        <article><strong>+120</strong><span>Lecciones activas</span></article>
+        <article><strong>4.9/5</strong><span>Valoración media</span></article>
+        <article><strong>+3k</strong><span>Retos completados</span></article>
+      </div>
+    </div>
+
+    <aside class="hero-side">
+      <h3>Ruta inteligente</h3>
+      <ol>
+        @for (step of learningPath; track step) {
+          <li>{{ step }}</li>
+        }
+      </ol>
+    </aside>
+  </div>
+</section>
+
+<section class="page-shell interactive section-dark">
+  <div class="heading">
+    <h2>Práctica interactiva</h2>
+    <p>Resuelve retos como en un laboratorio, con feedback inmediato.</p>
+  </div>
+
+  <article class="quiz-card fade-up">
+    <h3>{{ challenge.prompt }}</h3>
+    <div class="options">
+      @for (option of challenge.options; track option) {
+        <button type="button" (click)="pickAnswer(option)" [ngClass]="{ selected: selectedAnswer() === option }">
+          {{ option }}
+        </button>
+      }
+    </div>
+
+    @if (selectedAnswer()) {
+      <p class="feedback" [ngClass]="{ ok: isCorrect(), bad: !isCorrect() }">
+        {{ isCorrect() ? '¡Correcto! Sigue al siguiente reto.' : 'No exactamente. Prueba otra opción.' }}
+      </p>
+    }
+  </article>
+</section>
+
+<section class="page-shell resources">
+  <div class="heading">
+    <h2>Recursos abiertos</h2>
+    <p>Elige formato y estudia con el material que mejor se adapta a ti.</p>
+  </div>
+
+  <div class="resource-filters">
+    @for (type of resourceTypes; track type) {
+      <button type="button" (click)="setResourceType(type)" [ngClass]="{ active: selectedType() === type }">
+        {{ type }}
+      </button>
+    }
+  </div>
+
+  <div class="grid">
+    @for (resource of filteredResources(); track resource.title) {
+      <article class="resource-card fade-up">
+        <span class="badge">{{ resource.type }}</span>
+        <h3>{{ resource.title }}</h3>
+        <p>{{ resource.description }}</p>
+        <small>{{ resource.source }}</small>
+      </article>
+    }
+  </div>
+</section>
+
+<section class="page-shell bookings section-dark">
+  <div class="heading">
+    <h2>Reservas de tutoría</h2>
+    <p>Bloquea tu horario y avanza con acompañamiento 1:1.</p>
+  </div>
+
+  <div class="slots">
+    @for (slot of slots$ | async; track slot.id) {
+      <article class="fade-up" [ngClass]="{ unavailable: !slot.available, selected: selectedSlotId() === slot.id }">
+        <div>
+          <strong>{{ slot.day }}</strong>
+          <span>{{ slot.start }} - {{ slot.end }}</span>
+        </div>
+        <button type="button" [disabled]="!slot.available" (click)="selectSlot(slot.id)">
+          {{ !slot.available ? 'No disponible' : selectedSlotId() === slot.id ? 'Seleccionado' : 'Reservar' }}
+        </button>
+      </article>
+    }
+  </div>
+</section>

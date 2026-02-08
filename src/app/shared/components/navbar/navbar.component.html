@@ -1,0 +1,20 @@
+<header class="nav-wrap">
+  <div class="page-shell navbar">
+    <a routerLink="/" class="brand">
+      <span class="dot"></span>
+      <span>
+        <small>Academia</small>
+        EduTeacher
+      </span>
+    </a>
+
+    <nav>
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Inicio</a>
+      <a routerLink="/contenido" routerLinkActive="active">Recursos</a>
+      <a routerLink="/tutorias" routerLinkActive="active">Agenda</a>
+      <a routerLink="/acceso" routerLinkActive="active">Cuenta</a>
+    </nav>
+
+    <a class="cta" routerLink="/tutorias">Reserva ahora</a>
+  </div>
+</header>
